@@ -2,14 +2,15 @@ import subprocess
 import os
 import sys
 
-Languages = (
-    "cpp",
-)
+Languages = {
+    "cpp": "cpp/test",
+    "py":  [sys.executable, "py/test.py"],
+}
 
 class Driver:
     def __init__(self, lang):
         self.lang = lang
-        self.pipe = subprocess.Popen(os.path.join(lang, "test"), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        self.pipe = subprocess.Popen(Languages[lang], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     def call(self, name, x):
         self.pipe.stdin.write((name + " " + str(x) + "\n").encode())
         self.pipe.stdin.flush()
