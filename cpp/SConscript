@@ -1,0 +1,6 @@
+Program("test", Split("""
+    driver.cpp
+    phi.cpp
+    NormalCDFInverse.cpp
+    Gamma.cpp
+"""))
