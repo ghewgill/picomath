@@ -3,15 +3,15 @@ import os
 import sys
 
 Languages = {
-    "cpp": "cpp/test",
-    "cs": ["mono", "cs/test.exe"],
-    "py":  [sys.executable, "py/test.py"],
+    "cpp": "./test",
+    "cs": ["mono", "./test.exe"],
+    "py":  [sys.executable, "./test.py"],
 }
 
 class Driver:
     def __init__(self, lang):
         self.lang = lang
-        self.pipe = subprocess.Popen(Languages[lang], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        self.pipe = subprocess.Popen(Languages[lang], stdin=subprocess.PIPE, stdout=subprocess.PIPE, cwd=lang)
     def call(self, name, x):
         self.pipe.stdin.write((name + " " + str(x) + "\n").encode())
         self.pipe.stdin.flush()
