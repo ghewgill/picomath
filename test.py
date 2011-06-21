@@ -5,6 +5,7 @@ import sys
 Languages = {
     "cpp": "./test",
     "cs": ["mono", "./test.exe"],
+    "java": ["java", "Test"],
     "py":  [sys.executable, "./test.py"],
 }
 
