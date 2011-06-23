@@ -35,7 +35,7 @@ def test_erf(driver):
         error = abs(y - driver.call("erf", x))
         if error > maxError:
             maxError = error
-    sys.stdout.write("Maximum error: " + str(maxError) + "\n")
+    sys.stdout.write("erf: Maximum error: " + str(maxError) + "\n")
 
 def test_expm1(driver):
     Tests = (
@@ -50,7 +50,7 @@ def test_expm1(driver):
         error = abs(y - driver.call("expm1", x))
         if error > maxError:
             maxError = error
-    sys.stdout.write("Maximum error: " + str(maxError) + "\n")
+    sys.stdout.write("expm1: Maximum error: " + str(maxError) + "\n")
 
 def test_phi(driver):
     Tests = (
@@ -65,7 +65,7 @@ def test_phi(driver):
         error = abs(y - driver.call("phi", x))
         if error > maxError:
             maxError = error
-    sys.stdout.write("Maximum error: " + str(maxError) + "\n")
+    sys.stdout.write("phi: Maximum error: " + str(maxError) + "\n")
 
 def test_NormalCDFInverse(driver):
     Tests = (
@@ -91,7 +91,7 @@ def test_NormalCDFInverse(driver):
         error = abs(y - driver.call("NormalCDFInverse", x))
         if error > maxError:
             maxError = error
-    sys.stdout.write("Maximum error: " + str(maxError) + "\n")
+    sys.stdout.write("NormalCDFInverse: Maximum error: " + str(maxError) + "\n")
 
 def test_Gamma(driver):
     Tests = (
@@ -129,12 +129,12 @@ def test_Gamma(driver):
     t = worst_absolute_error_case
     x, y = Tests[t]
     a = driver.call("Gamma", x)
-    sys.stdout.write("Worst absolute error: " + str(abs(a - y)) + "\nGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
+    sys.stdout.write("Gamma: Worst absolute error: " + str(abs(a - y)) + "\nGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
 
     t = worst_relative_error_case
     x, y = Tests[t]
     a = driver.call("Gamma", x)
-    sys.stdout.write("Worst relative error: " + str(abs(a - y)) + "\nGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
+    sys.stdout.write("Gamma: Worst relative error: " + str(abs(a - y)) + "\nGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
 
 def test_LogGamma(driver):
     Tests = (
@@ -170,12 +170,12 @@ def test_LogGamma(driver):
     t = worst_absolute_error_case
     x, y = Tests[t]
     a = driver.call("LogGamma", x)
-    sys.stdout.write("Worst absolute error: " + str(abs(a - y)) + "\nLogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
+    sys.stdout.write("LogGamma: Worst absolute error: " + str(abs(a - y)) + "\nLogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
 
     t = worst_relative_error_case
     x, y = Tests[t]
     a = driver.call("LogGamma", x)
-    sys.stdout.write("Worst relative error: " + str(abs(a - y)) + "\nLogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
+    sys.stdout.write("LogGamma: Worst relative error: " + str(abs(a - y)) + "\nLogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
 
 def tests():
     for lang in Languages:
