@@ -5,6 +5,7 @@ import sys
 Languages = {
     "cpp": "./test",
     "cs": ["mono", "./test.exe"],
+    "erl": ["escript", "test.erl"],
     "java": ["java", "Test"],
     "py":  [sys.executable, "./test.py"],
 }
@@ -14,7 +15,7 @@ class Driver:
         self.lang = lang
         self.pipe = subprocess.Popen(Languages[lang], stdin=subprocess.PIPE, stdout=subprocess.PIPE, cwd=lang)
     def call(self, name, x):
-        self.pipe.stdin.write((name + " " + str(x) + "\n").encode())
+        self.pipe.stdin.write(("%s %e\n" % (name, x)).encode())
         self.pipe.stdin.flush()
         s = self.pipe.stdout.readline()
         return float(s)
