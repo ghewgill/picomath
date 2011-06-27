@@ -7,6 +7,7 @@ Languages = {
     "cs": ["mono", "./test.exe"],
     "erl": ["escript", "test.erl"],
     "java": ["java", "Test"],
+    "php": ["php", "test.php"],
     "pl": ["perl", "test.pl"],
     "py":  [sys.executable, "./test.py"],
 }
