@@ -11,6 +11,7 @@ Languages = {
     "php": ["php", "test.php"],
     "pl": ["perl", "test.pl"],
     "py":  [sys.executable, "./test.py"],
+    "rb": ["ruby", "test.rb"],
 }
 
 class Driver:
