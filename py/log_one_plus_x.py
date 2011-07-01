@@ -3,7 +3,7 @@ import math
 # compute log(1+x) without loss of precision for small values of x
 def log_one_plus_x(x):
     if x <= -1.0:
-        raise FloatingPointError, "argument must be > -1"
+        raise FloatingPointError("argument must be > -1")
 
     if abs(x) > 1e-4:
         # x is large enough that the obvious evaluation is OK
