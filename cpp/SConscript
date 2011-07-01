@@ -1,5 +1,5 @@
 Program("test", Split("""
-    driver.cpp
+    test.cpp
     phi.cpp
     NormalCDFInverse.cpp
     Gamma.cpp
