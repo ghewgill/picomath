@@ -2,6 +2,7 @@ import sys
 
 import erf
 import expm1
+import gamma
 import log_one_plus_x
 import normal_CDF_inverse
 import phi
@@ -11,8 +12,8 @@ Functions = {
     "expm1": expm1.expm1,
     "phi": phi.phi,
     "NormalCDFInverse": normal_CDF_inverse.normal_CDF_inverse,
-    "Gamma": lambda x: 0,
-    "LogGamma": lambda x: 0,
+    "Gamma": gamma.gamma,
+    "LogGamma": gamma.log_gamma,
 }
 
 while True:
