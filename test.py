@@ -27,7 +27,7 @@ class Driver:
         self.pipe.stdin.close()
         self.pipe.wait()
 
-def test_erf(driver):
+def test_erf(driver, log):
     Tests = (
         (-3,  -0.999977909503),
         (-1,  -0.842700792950),
@@ -40,9 +40,10 @@ def test_erf(driver):
         error = abs(y - driver.call("erf", x))
         if error > maxError:
             maxError = error
-    sys.stdout.write("erf: Maximum error: " + str(maxError) + "\n")
+    log.append("erf: Maximum error: " + str(maxError))
+    return maxError < 1e-6
 
-def test_expm1(driver):
+def test_expm1(driver, log):
     Tests = (
         (-1,          -0.632120558828558),
         (0.0,          0.0),
@@ -55,9 +56,10 @@ def test_expm1(driver):
         error = abs(y - driver.call("expm1", x))
         if error > maxError:
             maxError = error
-    sys.stdout.write("expm1: Maximum error: " + str(maxError) + "\n")
+    log.append("expm1: Maximum error: " + str(maxError))
+    return maxError < 1e-6
 
-def test_phi(driver):
+def test_phi(driver, log):
     Tests = (
         (-3,  0.00134989803163),
         (-1,  0.158655253931),
@@ -70,9 +72,10 @@ def test_phi(driver):
         error = abs(y - driver.call("phi", x))
         if error > maxError:
             maxError = error
-    sys.stdout.write("phi: Maximum error: " + str(maxError) + "\n")
+    log.append("phi: Maximum error: " + str(maxError))
+    return maxError < 1e-6
 
-def test_NormalCDFInverse(driver):
+def test_NormalCDFInverse(driver, log):
     Tests = (
         (0.0000001, -5.199337582187471),
         (0.00001,   -4.264890793922602),
@@ -96,9 +99,10 @@ def test_NormalCDFInverse(driver):
         error = abs(y - driver.call("NormalCDFInverse", x))
         if error > maxError:
             maxError = error
-    sys.stdout.write("NormalCDFInverse: Maximum error: " + str(maxError) + "\n")
+    log.append("NormalCDFInverse: Maximum error: " + str(maxError))
+    return maxError < 1e-3
 
-def test_Gamma(driver):
+def test_Gamma(driver, log):
     Tests = (
         (1e-20, 1e+20),
         (2.19824158876e-16, 4.5490905327e+15),    # 0.99*DBL_EPSILON
@@ -134,14 +138,18 @@ def test_Gamma(driver):
     t = worst_absolute_error_case
     x, y = Tests[t]
     a = driver.call("Gamma", x)
-    sys.stdout.write("Gamma: Worst absolute error: " + str(abs(a - y)) + "\nGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
+    log.append("Gamma: Worst absolute error: " + str(abs(a - y)))
+    log.append("Gamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y))
 
     t = worst_relative_error_case
     x, y = Tests[t]
     a = driver.call("Gamma", x)
-    sys.stdout.write("Gamma: Worst relative error: " + str(abs(a - y)) + "\nGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
+    log.append("Gamma: Worst relative error: " + str(abs(a - y) / y))
+    log.append("Gamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y))
 
-def test_LogGamma(driver):
+    return worst_relative_error < 1e-3
+
+def test_LogGamma(driver, log):
     Tests = (
         (1e-12, 27.6310211159),
         (0.9999, 5.77297915613e-05),
@@ -175,24 +183,49 @@ def test_LogGamma(driver):
     t = worst_absolute_error_case
     x, y = Tests[t]
     a = driver.call("LogGamma", x)
-    sys.stdout.write("LogGamma: Worst absolute error: " + str(abs(a - y)) + "\nLogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
+    log.append("LogGamma: Worst absolute error: " + str(abs(a - y)))
+    log.append("LogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y))
 
     t = worst_relative_error_case
     x, y = Tests[t]
     a = driver.call("LogGamma", x)
-    sys.stdout.write("LogGamma: Worst relative error: " + str(abs(a - y)) + "\nLogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y) + "\n")
+    log.append("LogGamma: Worst relative error: " + str(abs(a - y) / y))
+    log.append("LogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y))
+
+    return worst_relative_error < 1e-2
+
+TestFunctions = (
+    test_erf,
+    test_expm1,
+    test_phi,
+    test_NormalCDFInverse,
+    test_Gamma,
+    test_LogGamma,
+)
 
 def tests():
+    anyfail = False
     for lang in Languages:
-        sys.stdout.write("\n" + lang + "\n")
+        sys.stdout.write("Checking " + lang + "... ")
+        sys.stdout.flush()
         driver = Driver(lang)
-        test_erf(driver)
-        test_expm1(driver)
-        test_phi(driver)
-        test_NormalCDFInverse(driver)
-        test_Gamma(driver)
-        test_LogGamma(driver)
+        logs = []
+        allok = True
+        for tf in TestFunctions:
+            log = []
+            if not tf(driver, log):
+                allok = False
+                logs.extend(log)
+        if allok:
+            sys.stdout.write("ok\n")
+        else:
+            anyfail = True
+            sys.stdout.write("FAIL\n")
+            for s in logs:
+                sys.stdout.write(s + "\n")
         driver.close()
+    if anyfail:
+        sys.exit(1)
 
 if __name__ == "__main__":
     tests()
