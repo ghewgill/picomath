@@ -213,10 +213,15 @@ TestFunctions = (
 
 def tests():
     anyfail = False
-    for lang in Languages:
+    for lang in sorted(Languages):
         sys.stdout.write("Checking " + lang + "... ")
         sys.stdout.flush()
-        driver = Driver(lang)
+        try:
+            driver = Driver(lang)
+        except:
+            sys.stdout.write("UNAVAILABLE\n")
+            sys.stdout.write(str(sys.exc_info()[1]) + "\n")
+            continue
         logs = []
         allok = True
         for tf in TestFunctions:
