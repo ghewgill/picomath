@@ -14,15 +14,23 @@ Languages = {
     "rb":   ["ruby", "test.rb"],
 }
 
+class ExecutionError:
+    def __init__(self, name, error):
+        self.name = name
+        self.error = error
+
 class Driver:
     def __init__(self, lang):
         self.lang = lang
-        self.pipe = subprocess.Popen(Languages[lang], stdin=subprocess.PIPE, stdout=subprocess.PIPE, cwd=lang)
+        self.pipe = subprocess.Popen(Languages[lang], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=lang)
     def call(self, name, x):
         self.pipe.stdin.write(("%s %e\n" % (name, x)).encode())
         self.pipe.stdin.flush()
         s = self.pipe.stdout.readline()
-        return float(s)
+        if s:
+            return float(s)
+        else:
+            raise ExecutionError(name, self.pipe.stderr.read())
     def close(self):
         self.pipe.stdin.close()
         self.pipe.wait()
@@ -213,9 +221,16 @@ def tests():
         allok = True
         for tf in TestFunctions:
             log = []
-            if not tf(driver, log):
+            try:
+                if not tf(driver, log):
+                    allok = False
+                    logs.extend(log)
+            except ExecutionError:
                 allok = False
-                logs.extend(log)
+                e = sys.exc_info()[1]
+                logs.append("Error while executing: " + e.name)
+                logs.extend(e.error.split("\n"))
+                break
         if allok:
             sys.stdout.write("ok\n")
         else:
