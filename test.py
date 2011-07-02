@@ -3,15 +3,15 @@ import os
 import sys
 
 Languages = {
-    "cpp": "./test",
-    "cs": ["mono", "./test.exe"],
-    "erl": ["escript", "test.erl"],
+    "cpp":  "./test",
+    "cs":   ["mono", "test.exe"],
+    "erl":  ["escript", "test.erl"],
     "java": ["java", "Test"],
-    "js": ["java", "-cp", "js.jar", "org.mozilla.javascript.tools.shell.Main", "test.js"],
-    "php": ["php", "test.php"],
-    "pl": ["perl", "test.pl"],
-    "py":  [sys.executable, "./test.py"],
-    "rb": ["ruby", "test.rb"],
+    "js":   ["java", "-cp", "js.jar", "org.mozilla.javascript.tools.shell.Main", "test.js"],
+    "php":  ["php", "test.php"],
+    "pl":   ["perl", "test.pl"],
+    "py":   [sys.executable, "test.py"],
+    "rb":   ["ruby", "test.rb"],
 }
 
 class Driver:
