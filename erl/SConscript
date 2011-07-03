@@ -1,7 +1,8 @@
 import os
 
-env = Environment(ENV={"HOME": os.getenv("HOME")})
-env.Append(BUILDERS={"Beam": Builder(action="/opt/local/bin/erlc -o ${TARGET.dir} $SOURCE", suffix=".beam")})
+env = Environment()
+env.Append(ENV={"HOME": os.getenv("HOME")})
+env.Append(BUILDERS={"Beam": Builder(action="erlc -o ${TARGET.dir} $SOURCE", suffix=".beam")})
 env.Beam("erf.erl")
 env.Beam("expm1.erl")
 env.Beam("phi.erl")

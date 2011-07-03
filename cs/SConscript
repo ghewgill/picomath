@@ -5,4 +5,4 @@ Command("test.exe", Split("""
     Phi.cs
     NormalCDFInverse.cs
     Gamma.cs
-"""), "/opt/local/bin/mcs $SOURCES")
+"""), "mcs $SOURCES")
