@@ -3,15 +3,15 @@ import os
 import sys
 
 Languages = {
-    "cpp":  "./test",
-    "cs":   ["mono", "test.exe"],
-    "erl":  ["escript", "test.erl"],
-    "java": ["java", "Test"],
-    "js":   ["java", "-cp", "js.jar", "org.mozilla.javascript.tools.shell.Main", "test.js"],
-    "php":  ["php", "test.php"],
-    "pl":   ["perl", "test.pl"],
-    "py":   [sys.executable, "test.py"],
-    "rb":   ["ruby", "test.rb"],
+    "cpp":          "./test",
+    "csharp":       ["mono", "test.exe"],
+    "erlang":       ["escript", "test.erl"],
+    "java":         ["java", "Test"],
+    "javascript":   ["java", "-cp", "js.jar", "org.mozilla.javascript.tools.shell.Main", "test.js"],
+    "php":          ["php", "test.php"],
+    "perl":         ["perl", "test.pl"],
+    "python":       [sys.executable, "test.py"],
+    "ruby":         ["ruby", "test.rb"],
 }
 
 class ExecutionError:

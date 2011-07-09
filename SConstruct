@@ -1,4 +1,4 @@
 SConscript("cpp/SConscript")
-SConscript("cs/SConscript")
-SConscript("erl/SConscript")
+SConscript("csharp/SConscript")
+SConscript("erlang/SConscript")
 SConscript("java/SConscript")
