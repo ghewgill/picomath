@@ -15,24 +15,24 @@ double Gamma
     double x    // We require x > 0
 )
 {
-	if (x <= 0.0)
-	{
-		std::stringstream os;
+    if (x <= 0.0)
+    {
+        std::stringstream os;
         os << "Invalid input argument " << x <<  ". Argument must be positive.";
         throw std::invalid_argument( os.str() ); 
-	}
+    }
 
     // Split the function domain into three intervals:
     // (0, 0.001), [0.001, 12), and (12, infinity)
 
     ///////////////////////////////////////////////////////////////////////////
     // First interval: (0, 0.001)
-	//
-	// For small x, 1/Gamma(x) has power series x + gamma x^2  - ...
-	// So in this range, 1/Gamma(x) = x + gamma x^2 with error on the order of x^3.
-	// The relative error over this interval is less than 6e-7.
+    //
+    // For small x, 1/Gamma(x) has power series x + gamma x^2  - ...
+    // So in this range, 1/Gamma(x) = x + gamma x^2 with error on the order of x^3.
+    // The relative error over this interval is less than 6e-7.
 
-	const double gamma = 0.577215664901532860606512090; // Euler's gamma constant
+    const double gamma = 0.577215664901532860606512090; // Euler's gamma constant
 
     if (x < 0.001)
         return 1.0/(x*(1.0 + gamma*x));
@@ -40,12 +40,12 @@ double Gamma
     ///////////////////////////////////////////////////////////////////////////
     // Second interval: [0.001, 12)
     
-	if (x < 12.0)
+    if (x < 12.0)
     {
         // The algorithm directly approximates gamma over (1,2) and uses
         // reduction identities to reduce other arguments to this interval.
-		
-		double y = x;
+
+        double y = x;
         int n = 0;
         bool arg_was_less_than_one = (y < 1.0);
 
@@ -114,7 +114,7 @@ double Gamma
                 result *= y++;
         }
 
-		return result;
+        return result;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -122,9 +122,9 @@ double Gamma
 
     if (x > 171.624)
     {
-		// Correct answer too large to display. Force +infinity.
-		double temp = DBL_MAX;
-		return temp*2.0;
+        // Correct answer too large to display. Force +infinity.
+        double temp = DBL_MAX;
+        return temp*2.0;
     }
 
     return exp(LogGamma(x));
@@ -135,33 +135,33 @@ double LogGamma
     double x    // x must be positive
 )
 {
-	if (x <= 0.0)
-	{
-		std::stringstream os;
+    if (x <= 0.0)
+    {
+        std::stringstream os;
         os << "Invalid input argument " << x <<  ". Argument must be positive.";
         throw std::invalid_argument( os.str() ); 
-	}
+    }
 
     if (x < 12.0)
     {
         return log(fabs(Gamma(x)));
     }
 
-	// Abramowitz and Stegun 6.1.41
+    // Abramowitz and Stegun 6.1.41
     // Asymptotic series should be good to at least 11 or 12 figures
     // For error analysis, see Whittiker and Watson
     // A Course in Modern Analysis (1927), page 252
 
     static const double c[8] =
     {
-		 1.0/12.0,
-		-1.0/360.0,
-		1.0/1260.0,
-		-1.0/1680.0,
-		1.0/1188.0,
-		-691.0/360360.0,
-		1.0/156.0,
-		-3617.0/122400.0
+         1.0/12.0,
+        -1.0/360.0,
+         1.0/1260.0,
+        -1.0/1680.0,
+         1.0/1188.0,
+        -691.0/360360.0,
+         1.0/156.0,
+        -3617.0/122400.0
     };
     double z = 1.0/(x*x);
     double sum = c[7];
@@ -174,5 +174,5 @@ double LogGamma
 
     static const double halfLogTwoPi = 0.91893853320467274178032973640562;
     double logGamma = (x - 0.5)*log(x) - x + halfLogTwoPi + series;    
-	return logGamma;
+    return logGamma;
 }

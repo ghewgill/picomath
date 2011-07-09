@@ -13,10 +13,10 @@ def gamma(x):
 
     ###########################################################################
     # First interval: (0, 0.001)
-        #
-        # For small x, 1/Gamma(x) has power series x + gamma x^2  - ...
-        # So in this range, 1/Gamma(x) = x + gamma x^2 with error on the order of x^3.
-        # The relative error over this interval is less than 6e-7.
+    #
+    # For small x, 1/Gamma(x) has power series x + gamma x^2  - ...
+    # So in this range, 1/Gamma(x) = x + gamma x^2 with error on the order of x^3.
+    # The relative error over this interval is less than 6e-7.
 
     gamma = 0.577215664901532860606512090 # Euler's gamma constant
 
@@ -93,8 +93,8 @@ def gamma(x):
     # Third interval: [12, infinity)
 
     if x > 171.624:
-                # Correct answer too large to display. 
-                return 1.0/0 # float infinity
+        # Correct answer too large to display. 
+        return 1.0/0 # float infinity
 
     return math.exp(log_gamma(x))
 
@@ -111,14 +111,14 @@ def log_gamma(x):
     # A Course in Modern Analysis (1927), page 252
 
     c = [
-                 1.0/12.0,
-                -1.0/360.0,
-                1.0/1260.0,
-                -1.0/1680.0,
-                1.0/1188.0,
-                -691.0/360360.0,
-                1.0/156.0,
-                -3617.0/122400.0
+         1.0/12.0,
+        -1.0/360.0,
+         1.0/1260.0,
+        -1.0/1680.0,
+         1.0/1188.0,
+        -691.0/360360.0,
+         1.0/156.0,
+        -3617.0/122400.0
     ]
     z = 1.0/(x*x)
     sum = c[7]

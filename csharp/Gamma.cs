@@ -22,12 +22,12 @@ class Gamma
 
         ///////////////////////////////////////////////////////////////////////////
         // First interval: (0, 0.001)
-            //
-            // For small x, 1/Gamma(x) has power series x + gamma x^2  - ...
-            // So in this range, 1/Gamma(x) = x + gamma x^2 with error on the order of x^3.
-            // The relative error over this interval is less than 6e-7.
+        //
+        // For small x, 1/Gamma(x) has power series x + gamma x^2  - ...
+        // So in this range, 1/Gamma(x) = x + gamma x^2 with error on the order of x^3.
+        // The relative error over this interval is less than 6e-7.
 
-            const double gamma = 0.577215664901532860606512090; // Euler's gamma constant
+        const double gamma = 0.577215664901532860606512090; // Euler's gamma constant
 
         if (x < 0.001)
             return 1.0/(x*(1.0 + gamma*x));
@@ -35,12 +35,12 @@ class Gamma
         ///////////////////////////////////////////////////////////////////////////
         // Second interval: [0.001, 12)
 
-            if (x < 12.0)
+        if (x < 12.0)
         {
             // The algorithm directly approximates gamma over (1,2) and uses
             // reduction identities to reduce other arguments to this interval.
             
-                    double y = x;
+            double y = x;
             int n = 0;
             bool arg_was_less_than_one = (y < 1.0);
 
@@ -109,7 +109,7 @@ class Gamma
                     result *= y++;
             }
 
-                    return result;
+            return result;
         }
 
         ///////////////////////////////////////////////////////////////////////////
@@ -117,8 +117,8 @@ class Gamma
 
         if (x > 171.624)
         {
-                    // Correct answer too large to display. 
-                    return double.PositiveInfinity;
+            // Correct answer too large to display. 
+            return double.PositiveInfinity;
         }
 
         return Math.Exp(logGamma(x));
@@ -129,11 +129,11 @@ class Gamma
         double x    // x must be positive
     )
     {
-            if (x <= 0.0)
-            {
-                    string msg = string.Format("Invalid input argument {0}. Argument must be positive.", x);
+        if (x <= 0.0)
+        {
+            string msg = string.Format("Invalid input argument {0}. Argument must be positive.", x);
             throw new ArgumentOutOfRangeException(msg);
-            }
+        }
 
         if (x < 12.0)
         {
@@ -147,14 +147,14 @@ class Gamma
 
         double[] c =
         {
-                     1.0/12.0,
-                    -1.0/360.0,
-                    1.0/1260.0,
-                    -1.0/1680.0,
-                    1.0/1188.0,
-                    -691.0/360360.0,
-                    1.0/156.0,
-                    -3617.0/122400.0
+             1.0/12.0,
+            -1.0/360.0,
+             1.0/1260.0,
+            -1.0/1680.0,
+             1.0/1188.0,
+            -691.0/360360.0,
+             1.0/156.0,
+            -3617.0/122400.0
         };
         double z = 1.0/(x*x);
         double sum = c[7];
@@ -167,7 +167,7 @@ class Gamma
 
         double halfLogTwoPi = 0.91893853320467274178032973640562;
         double logGamma = (x - 0.5)*Math.Log(x) - x + halfLogTwoPi + series;    
-            return logGamma;
+        return logGamma;
     }
 
 }

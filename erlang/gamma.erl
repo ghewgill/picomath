@@ -14,10 +14,10 @@ gamma(X) when X > 0 ->
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % First interval: (0, 0.001)
-            %
-            % For small x, 1/Gamma(x) has power series x + gamma x^2  - ...
-            % So in this range, 1/Gamma(x) = x + gamma x^2 with error on the order of x^3.
-            % The relative error over this interval is less than 6e-7.
+        %
+        % For small x, 1/Gamma(x) has power series x + gamma x^2  - ...
+        % So in this range, 1/Gamma(x) = x + gamma x^2 with error on the order of x^3.
+        % The relative error over this interval is less than 6e-7.
 
         X < 0.001 ->
             Gamma = 0.577215664901532860606512090, % Euler's gamma constant
@@ -122,14 +122,14 @@ log_gamma(X) when X > 0 ->
 
             C = lists:reverse(
             [
-                         1.0/12.0,
-                        -1.0/360.0,
-                        1.0/1260.0,
-                        -1.0/1680.0,
-                        1.0/1188.0,
-                        -691.0/360360.0,
-                        1.0/156.0,
-                        -3617.0/122400.0
+                 1.0/12.0,
+                -1.0/360.0,
+                 1.0/1260.0,
+                -1.0/1680.0,
+                 1.0/1188.0,
+                -691.0/360360.0,
+                 1.0/156.0,
+                -3617.0/122400.0
             ]),
             Z = 1.0/(X*X),
             Sum = log_gamma_iter(Z, 0, C),
