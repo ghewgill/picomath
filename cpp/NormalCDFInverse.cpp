@@ -1,7 +1,5 @@
 #include <cmath>
 #include <sstream>
-#include <iostream>
-#include <iomanip>
 #include <stdexcept>
 
 double NormalCDFInverse(double p);

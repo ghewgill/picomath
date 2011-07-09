@@ -1,6 +1,5 @@
 #include <cmath>
 #include <sstream>
-#include <iostream>
 #include <stdexcept>
 
 // compute log(1+x) without losing precision for small values of x

@@ -3,7 +3,6 @@
 #include <cfloat>
 #include <cmath>
 #include <sstream>
-#include <iostream>
 #include <stdexcept>
 
 #include "Gamma.h"

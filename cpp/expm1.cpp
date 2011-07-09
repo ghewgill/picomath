@@ -1,5 +1,4 @@
 #include <cmath>
-#include <iostream>
 
 // Compute exp(x) - 1 without loss of precision for small values of x.
 double expm1(double x)
