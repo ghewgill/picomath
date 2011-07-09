@@ -2,11 +2,6 @@
 
 main([]) ->
     loop().
-    %Pid = spawn(?MODULE, loop, []).
-    %receive
-    %    ok ->
-    %        exit()
-    %end.
 
 loop() ->
     S = io:get_line(""),
