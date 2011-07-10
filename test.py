@@ -15,6 +15,8 @@ Languages = {
     "ruby":         ["ruby", "test.rb"],
 }
 
+Verbose = False
+
 class ExecutionError:
     def __init__(self, name, error):
         self.name = name
@@ -25,11 +27,15 @@ class Driver:
         self.lang = lang
         self.pipe = subprocess.Popen(Languages[lang], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=lang)
     def call(self, name, x):
+        if Verbose:
+            sys.stdout.write("%s %e\n" % (name, x))
         self.pipe.stdin.write(("%s %e\n" % (name, x)).encode())
         self.pipe.stdin.flush()
         s = self.pipe.stdout.readline()
         if not s:
             raise ExecutionError(name, self.pipe.stderr.read())
+        if Verbose:
+            sys.stdout.write(s)
         try:
             return float(s)
         except:
@@ -231,6 +237,12 @@ TestFunctions = (
 )
 
 def tests():
+    global Verbose
+    a = 1
+    while a < len(sys.argv):
+        if sys.argv[a] == "-v":
+            Verbose = True
+        a += 1
     anyfail = False
     for lang in sorted(Languages):
         sys.stdout.write("Checking " + lang + "... ")
