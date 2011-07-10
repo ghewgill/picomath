@@ -3,6 +3,7 @@ require "expm1.rb"
 require "phi.rb"
 require "normal_cdf_inverse.rb"
 require "gamma.rb"
+require "log_factorial.rb"
 
 STDIN.each do |s|
     f, x = s.split
@@ -19,6 +20,8 @@ STDIN.each do |s|
         print gamma(x), "\n"
     elsif f == "LogGamma"
         print log_gamma(x), "\n"
+    elsif f == "LogFactorial"
+        print log_factorial(x), "\n"
     else
         STDERR.print "Unknown function: ", f, "\n"
         break

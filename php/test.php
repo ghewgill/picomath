@@ -5,6 +5,7 @@ require("erf.php");
 require("phi.php");
 require("normal_cdf_inverse.php");
 require("gamma.php");
+require("log_factorial.php");
 
 while ($s = fgets(STDIN)) {
     list($f, $x) = explode(" ", $s);
@@ -20,6 +21,8 @@ while ($s = fgets(STDIN)) {
         print gamma($x) . "\n";
     } elseif ($f == "LogGamma") {
         print log_gamma($x) . "\n";
+    } elseif ($f == "LogFactorial") {
+        print log_factorial(floor($x)) . "\n";
     } else {
         fputs(STDERR, "Unknown function: $f\n");
         break;

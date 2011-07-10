@@ -6,6 +6,7 @@ load("expm1.js");
 load("phi.js");
 load("normal_cdf_inverse.js");
 load("gamma.js");
+load("log_factorial.js");
 
 var stdin = new BufferedReader(new InputStreamReader(System['in']));
 while (true) {
@@ -28,6 +29,8 @@ while (true) {
         print(gamma(x));
     } else if (f == "LogGamma") {
         print(log_gamma(x));
+    } else if (f == "LogFactorial") {
+        print(log_factorial(x));
     } else {
         System.err.println("Unknown function: " + f);
         break;

@@ -5,4 +5,5 @@ Java(target=".", source=Split("""
     Phi.java
     NormalCDFInverse.java
     Gamma.java
+    LogFactorial.java
 """))

@@ -15,4 +15,5 @@ func("expm1", X) -> expm1:expm1(X);
 func("phi", X) -> phi:phi(X);
 func("NormalCDFInverse", X) -> normal_cdf_inverse:normal_cdf_inverse(X);
 func("Gamma", X) -> gamma:gamma(X);
-func("LogGamma", X) -> gamma:log_gamma(X).
+func("LogGamma", X) -> gamma:log_gamma(X);
+func("LogFactorial", X) -> log_factorial:log_factorial(trunc(X)).

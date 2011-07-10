@@ -19,6 +19,8 @@ class test {
                 System.Console.WriteLine(Gamma.gamma(x));
             } else if (a[0] == "LogGamma") {
                 System.Console.WriteLine(Gamma.logGamma(x));
+            } else if (a[0] == "LogFactorial") {
+                System.Console.WriteLine(LogFactorial.logFactorial((int)x));
             } else {
                 System.Console.WriteLine("Unknown funtion: " + a[0]);
                 break;

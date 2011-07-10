@@ -24,6 +24,8 @@ class Test {
                     System.out.println(Gamma.gamma(x));
                 } else if (a[0].equals("LogGamma")) {
                     System.out.println(Gamma.logGamma(x));
+                } else if (a[0].equals("LogFactorial")) {
+                    System.out.println(LogFactorial.logFactorial((int)x));
                 } else {
                     System.err.println("Unknown function: " + a[0]);
                     break;

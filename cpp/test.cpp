@@ -7,6 +7,7 @@ extern "C" double erf(double);
 extern "C" double expm1(double);
 double phi(double);
 double NormalCDFInverse(double p);
+double LogFactorial(int);
 
 int main(int, char *[])
 {
@@ -28,6 +29,8 @@ int main(int, char *[])
             std::cout << Gamma(x) << std::endl;
         } else if (f == "LogGamma") {
             std::cout << LogGamma(x) << std::endl;
+        } else if (f == "LogFactorial") {
+            std::cout << LogFactorial(x) << std::endl;
         } else {
             std::cerr << "Unknown function: " << f << std::endl;
             break;

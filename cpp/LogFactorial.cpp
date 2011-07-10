@@ -8,10 +8,10 @@ double LogFactorial(int n)
     if (n < 0)
     {
         std::stringstream os;
-        os << "Invalid input argument (" << n 
+        os << "Invalid input argument (" << n
         << "); may not be negative";
         throw std::invalid_argument( os.str() );
-        
+
     }
     else if (n > 254)
     {
@@ -21,7 +21,7 @@ double LogFactorial(int n)
     }
     else
     {
-        double lf[] =        
+        double lf[] =
         {
             0.000000000000000,
             0.000000000000000,

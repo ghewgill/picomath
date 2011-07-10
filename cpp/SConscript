@@ -3,4 +3,5 @@ Program("test", Split("""
     phi.cpp
     NormalCDFInverse.cpp
     Gamma.cpp
+    LogFactorial.cpp
 """))

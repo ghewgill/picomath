@@ -5,4 +5,5 @@ Command("test.exe", Split("""
     Phi.cs
     NormalCDFInverse.cs
     Gamma.cs
+    LogFactorial.cs
 """), "mcs $SOURCES")

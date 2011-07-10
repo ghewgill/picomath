@@ -1,3 +1,4 @@
+import math
 import subprocess
 import os
 import sys
@@ -204,6 +205,21 @@ def test_LogGamma(driver, log):
 
     return worst_relative_error < 1e-2
 
+def test_LogFactorial(driver, log):
+    def factorial(n):
+        r = 1
+        while n > 0:
+            r *= n
+            n -= 1
+        return r
+
+    maxError = 0
+    for x in (0, 1, 10, 100, 1000, 10000):
+        error = abs(math.log(factorial(x)) - driver.call("LogFactorial", x))
+        if error > maxError:
+            maxError = error
+    return maxError < 1e-6
+
 TestFunctions = (
     test_erf,
     test_expm1,
@@ -211,6 +227,7 @@ TestFunctions = (
     test_NormalCDFInverse,
     test_Gamma,
     test_LogGamma,
+    test_LogFactorial,
 )
 
 def tests():
