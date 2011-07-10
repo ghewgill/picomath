@@ -27,10 +27,12 @@ class Driver:
         self.pipe.stdin.write(("%s %e\n" % (name, x)).encode())
         self.pipe.stdin.flush()
         s = self.pipe.stdout.readline()
-        if s:
-            return float(s)
-        else:
+        if not s:
             raise ExecutionError(name, self.pipe.stderr.read())
+        try:
+            return float(s)
+        except:
+            raise ExecutionError(name, s + self.pipe.stdout.read())
     def close(self):
         self.pipe.stdin.close()
         self.pipe.wait()
