@@ -9,6 +9,7 @@ Languages = {
     "erlang":       ["escript", "test.erl"],
     "java":         ["java", "Test"],
     "javascript":   ["java", "-cp", "js.jar", "org.mozilla.javascript.tools.shell.Main", "test.js"],
+    "lua":          ["lua", "test.lua"],
     "php":          ["php", "test.php"],
     "perl":         ["perl", "test.pl"],
     "python":       [sys.executable, "test.py"],
