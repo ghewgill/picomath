@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>$language - picomath</title>
+</head>
+<body>
+</body>
+<h1>$language</h1>
+<ul>
+@iter functions@
+    <li><a href="$_.html">$_</a></li>
+@end@
+</ul>
+</html>

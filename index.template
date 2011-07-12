@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>picomath</title>
+</head>
+<body>
+<h1>picomath</h1>
+<ul>
+@iter languages@
+    <li><a href="$_/index.html">$_</a></li>
+@end@
+</ul>
+</body>
+</html>
