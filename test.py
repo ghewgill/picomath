@@ -14,6 +14,7 @@ Languages = {
     "perl":         ["perl", "test.pl"],
     "python":       [sys.executable, "test.py"],
     "ruby":         ["ruby", "test.rb"],
+    "tcl":          ["tclsh", "test.tcl"],
 }
 
 Verbose = False

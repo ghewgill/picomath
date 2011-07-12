@@ -16,6 +16,7 @@ Suffix = {
     "php": ".php",
     "python": ".py",
     "ruby": ".rb",
+    "tcl": ".tcl",
 }
 
 def template(file=None, text=None, vars=None):
