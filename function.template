@@ -1,8 +1,10 @@
 <html>
 <head>
 <title>$file - picomath</title>
+<link href="../prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../prettify.js" />
 </head>
-<body>
-<pre>$code</pre>
+<body onload="prettyPrint()">
+<pre class="prettyprint lang-$extension">$code</pre>
 </body>
 </html>

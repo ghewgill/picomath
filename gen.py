@@ -59,6 +59,7 @@ def main():
             with open(os.path.join(language, fn + ".html"), "w") as f:
                 f.write(template(file="function.template", vars={
                     "file": fn,
+                    "extension": Suffix[language][1:],
                     "code": open(os.path.join(language, fn)).read(),
                 }))
 
