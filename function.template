@@ -2,7 +2,7 @@
 <head>
 <title>$file - picomath</title>
 <link href="../prettify.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="../prettify.js" />
+<script type="text/javascript" src="../prettify.js"></script>
 </head>
 <body onload="prettyPrint()">
 <h1><a href="../index.html">picomath</a></h1>
