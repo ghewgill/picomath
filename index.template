@@ -106,6 +106,12 @@ The top level `test.py` runs each language-specific `test.*` in turn, communicat
 A simple text-based protocol is used to execute functions and return results.
 </p>
 
+<h2>Source Download</h2>
+
+<p>
+The source code is on <a href="https://github.com/ghewgill/picomath">github</a>, and can be cloned, forked, or downloaded from there.
+</p>
+
 <h2>About</h2>
 
 <ul>
