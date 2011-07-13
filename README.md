@@ -38,7 +38,7 @@ The functions are implemented in the following languages:
 - Lua
 - PHP
 - Perl
-- Python
+- Python (2.x and 3.x)
 - Ruby
 - Tcl
 

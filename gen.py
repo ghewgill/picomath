@@ -6,17 +6,17 @@ import string
 import test
 
 Languages = {
-    "cpp":          {"name": "C++",         "suffix": ".cpp"},
-    "csharp":       {"name": "C#",          "suffix": ".cs"},
-    "erlang":       {"name": "Erlang",      "suffix": ".erl"},
-    "java":         {"name": "Java",        "suffix": ".java"},
-    "javascript":   {"name": "Javascript",  "suffix": ".js"},
-    "lua":          {"name": "Lua",         "suffix": ".lua"},
-    "perl":         {"name": "Perl",        "suffix": ".pl"},
-    "php":          {"name": "PHP",         "suffix": ".php"},
-    "python":       {"name": "Python",      "suffix": ".py"},
-    "ruby":         {"name": "Ruby",        "suffix": ".rb"},
-    "tcl":          {"name": "Tcl",         "suffix": ".tcl"},
+    "cpp":          {"name": "C++",                     "suffix": ".cpp"},
+    "csharp":       {"name": "C#",                      "suffix": ".cs"},
+    "erlang":       {"name": "Erlang",                  "suffix": ".erl"},
+    "java":         {"name": "Java",                    "suffix": ".java"},
+    "javascript":   {"name": "Javascript",              "suffix": ".js"},
+    "lua":          {"name": "Lua",                     "suffix": ".lua"},
+    "perl":         {"name": "Perl",                    "suffix": ".pl"},
+    "php":          {"name": "PHP",                     "suffix": ".php"},
+    "python":       {"name": "Python (2.x and 3.x)",    "suffix": ".py"},
+    "ruby":         {"name": "Ruby",                    "suffix": ".rb"},
+    "tcl":          {"name": "Tcl",                     "suffix": ".tcl"},
 }
 
 def template(file=None, text=None, vars=None):
