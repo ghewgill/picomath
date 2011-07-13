@@ -5,18 +5,18 @@ import string
 
 import test
 
-Suffix = {
-    "cpp": ".cpp",
-    "csharp": ".cs",
-    "erlang": ".erl",
-    "java": ".java",
-    "javascript": ".js",
-    "lua": ".lua",
-    "perl": ".pl",
-    "php": ".php",
-    "python": ".py",
-    "ruby": ".rb",
-    "tcl": ".tcl",
+Languages = {
+    "cpp":          {"name": "C++",         "suffix": ".cpp"},
+    "csharp":       {"name": "C#",          "suffix": ".cs"},
+    "erlang":       {"name": "Erlang",      "suffix": ".erl"},
+    "java":         {"name": "Java",        "suffix": ".java"},
+    "javascript":   {"name": "Javascript",  "suffix": ".js"},
+    "lua":          {"name": "Lua",         "suffix": ".lua"},
+    "perl":         {"name": "Perl",        "suffix": ".pl"},
+    "php":          {"name": "PHP",         "suffix": ".php"},
+    "python":       {"name": "Python",      "suffix": ".py"},
+    "ruby":         {"name": "Ruby",        "suffix": ".rb"},
+    "tcl":          {"name": "Tcl",         "suffix": ".tcl"},
 }
 
 def template(file=None, text=None, vars=None):
@@ -37,7 +37,12 @@ def template(file=None, text=None, vars=None):
             while j < len(a) and not re.match(r"\w*@end@$", a[j]):
                 j += 1
             for x in vars[it]:
-                r += template(text="\n".join(a[i+1:j]), vars={"_": x})
+                if isinstance(x, dict):
+                    d = {"_": x}
+                    d.update(x)
+                    r += template(text="\n".join(a[i+1:j]), vars=d)
+                else:
+                    r += template(text="\n".join(a[i+1:j]), vars={"_": x})
             i = j + 1
         else:
             t = string.Template(s)
@@ -48,19 +53,20 @@ def template(file=None, text=None, vars=None):
 def main():
     languages = sorted(test.Languages.keys())
     with open("index.html", "w") as f:
-        f.write(template(file="index.template", vars={"languages": languages}))
+        f.write(template(file="index.template", vars={"languages": [dict(Languages[x].items() | {"dir": x}.items()) for x in languages]}))
     for language in languages:
-        files = [x for x in os.listdir(language) if x.endswith(Suffix[language]) and not x.startswith("test")]
+        files = [x for x in os.listdir(language) if x.endswith(Languages[language]["suffix"]) and not x.startswith("test")]
         with open(os.path.join(language, "index.html"), "w") as f:
             f.write(template(file="language.template", vars={
-                "language": language,
+                "name": Languages[language]["name"],
                 "functions": files,
             }))
         for fn in files:
             with open(os.path.join(language, fn + ".html"), "w") as f:
                 f.write(template(file="function.template", vars={
+                    "name": Languages[language]["name"],
                     "file": fn,
-                    "extension": Suffix[language][1:],
+                    "extension": Languages[language]["suffix"][1:],
                     "code": open(os.path.join(language, fn)).read(),
                 }))
 

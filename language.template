@@ -1,10 +1,11 @@
 <html>
 <head>
-<title>$language - picomath</title>
+<title>$name - picomath</title>
 </head>
 <body>
 </body>
-<h1>$language</h1>
+<h1><a href="../index.html">picomath</a></h1>
+<h2>$name</h2>
 <ul>
 @iter functions@
     <li><a href="$_.html">$_</a></li>

@@ -3,11 +3,115 @@
 <title>picomath</title>
 </head>
 <body>
+
 <h1>picomath</h1>
+
+<p>
+Picomath is a collection of small math functions inspired by John D. Cook's <a href="http://www.johndcook.com/stand_alone_code.html">Stand-alone code for numerical computing</a>. 
+It is not compiled into a <em>library</em> in the usual sense (that is, something you can link to).
+Rather, the functions are presented as standalone snippets of code.
+</p>
+
+<h2>License</h2>
+
+<p>
+The picomath library is in the <strong>public domain</strong>.
+Do whatever you want with it, no strings attached.
+Use at your own risk.
+</p>
+
+<h2>Features</h2>
+
+<p>
+Picomath provides the following functions:
+</p>
+
+<ul>
+    <li><a href="http://en.wikipedia.org/wiki/Error_function">Error function</a></li>
+    <li><a href="http://en.wikipedia.org/wiki/Cumulative_distribution_function">Phi (standard normal CDF)</a></li>
+    <li>Phi inverse</li>
+    <li><a href="http://en.wikipedia.org/wiki/Gamma_function">Gamma</a></li>
+    <li>Log Gamma</li>
+    <li>exp(x) - 1 (for small x)</li>
+    <li>log(n!)</li>
+</ul>
+
+<h2>Languages</h2>
+
+<p>
+The functions are implemented in the following languages:
+</p>
+
 <ul>
 @iter languages@
-    <li><a href="$_/index.html">$_</a></li>
+    <li><a href="$dir/index.html">$name</a></li>
 @end@
 </ul>
+
+<h2>Usage</h2>
+
+<p>
+The picomath library is organised into subdirectories, with each language in a subdirectory.
+Each function (or group of interrelated functions such as Gamma and Log Gamma) are implemented in one source file.
+Each source file is designed with minimal dependencies, so it can be included directly into a project as is, or copy and pasted into other code.
+</p>
+
+<h2>Test Suite</h2>
+
+<p>
+The test suite consists of two parts:
+</p>
+
+<ul>
+    <li>an `SConstruct` file (for <a href="http://scons.org">SCons</a>, a command line build system) to build the test code as needed</li>
+    <li>a Python `test.py` driver at the top level, and a corresponding `test.*` for each language</li>
+</ul>
+
+<p>
+To build the tests:
+</p>
+
+<pre>
+    $$ scons
+</pre>
+
+<p>
+To run the tests:
+</p>
+
+<pre>
+    $$ python test.py
+</pre>
+
+<p>
+The expected output is:
+</p>
+
+<pre>
+    Checking cpp... ok
+    Checking csharp... ok
+    Checking erlang... ok
+    Checking java... ok
+    Checking javascript... ok
+    Checking lua... ok
+    Checking perl... ok
+    Checking php... ok
+    Checking python... ok
+    Checking ruby... ok
+    Checking tcl... ok
+</pre>
+
+<p>
+The top level `test.py` runs each language-specific `test.*` in turn, communicating with the implementation using standard input and output.
+A simple text-based protocol is used to execute functions and return results.
+</p>
+
+<h2>About</h2>
+
+<ul>
+    <li><a href="http://www.johndcook.com">John D. Cook</a> is the original author of most of the functions themselves.</li>
+    <li><a href="http://hewgill.com">Greg Hewgill</a> implemented the test framework and translated the functions to many of the included languages.</li>
+</ul>
+
 </body>
 </html>
