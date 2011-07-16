@@ -240,13 +240,22 @@ TestFunctions = (
 
 def tests():
     global Verbose
+    langs = []
     a = 1
     while a < len(sys.argv):
-        if sys.argv[a] == "-v":
-            Verbose = True
+        if sys.argv[a].startswith("-"):
+            if sys.argv[a] == "-v":
+                Verbose = True
+            else:
+                sys.stderr.write("Unknown option: " + sys.argv[a] + "\n")
+                sys.exit(1)
+        else:
+            langs.append(sys.argv[a])
         a += 1
     anyfail = False
-    for lang in sorted(Languages):
+    if not langs:
+        langs = sorted(Languages)
+    for lang in langs:
         sys.stdout.write("Checking " + lang + "... ")
         sys.stdout.flush()
         try:
