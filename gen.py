@@ -16,6 +16,7 @@ Languages = {
     "php":          {"name": "PHP",                     "suffix": ".php"},
     "python":       {"name": "Python (2.x and 3.x)",    "suffix": ".py"},
     "ruby":         {"name": "Ruby",                    "suffix": ".rb"},
+    "scheme":       {"name": "Scheme",                  "suffix": ".scm"},
     "tcl":          {"name": "Tcl",                     "suffix": ".tcl"},
 }
 
