@@ -7,7 +7,7 @@ loop() ->
     S = io:get_line(""),
     [Func, X] = string:tokens(string:strip(S, right, $\n), " "),
     {V, []} = string:to_float(X),
-    io:format("~f~n", [func(Func, V)]),
+    io:format("~.16e~n", [func(Func, V)]),
     loop().
 
 func("erf", X) -> erf:erf(X);

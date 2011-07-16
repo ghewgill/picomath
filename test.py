@@ -167,7 +167,7 @@ def test_Gamma(driver, log):
     log.append("Gamma: Worst relative error: " + str(abs(a - y) / y))
     log.append("Gamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y))
 
-    return worst_relative_error < 1e-3
+    return worst_relative_error < 1e-6
 
 def test_LogGamma(driver, log):
     Tests = (
@@ -212,7 +212,7 @@ def test_LogGamma(driver, log):
     log.append("LogGamma: Worst relative error: " + str(abs(a - y) / y))
     log.append("LogGamma(" + str(x) + ") computed as " + str(a) + " but exact value is " + str(y))
 
-    return worst_relative_error < 1e-2
+    return worst_relative_error < 1e-10
 
 def test_LogFactorial(driver, log):
     def factorial(n):
