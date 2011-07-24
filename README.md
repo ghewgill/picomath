@@ -41,6 +41,7 @@ The functions are implemented in the following languages:
 - Perl
 - Python (2.x and 3.x)
 - Ruby
+- Scheme
 - Tcl
 
 Usage
@@ -79,6 +80,7 @@ The expected output is:
     Checking php... ok
     Checking python... ok
     Checking ruby... ok
+    Checking scheme... ok
     Checking tcl... ok
 
 The top level `test.py` runs each language-specific `test.*` in turn, communicating with the implementation using standard input and output.

@@ -99,6 +99,7 @@ The expected output is:
     Checking php... ok
     Checking python... ok
     Checking ruby... ok
+    Checking scheme... ok
     Checking tcl... ok
 </pre>
 
