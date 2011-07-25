@@ -6,6 +6,10 @@
 </body>
 <h1><a href="../index.html">picomath</a></h1>
 <h2>$name</h2>
+@include $lang/info.html@
+<p>
+Implementations by function:
+</p>
 <ul>
 @iter functions@
     <li><a href="$_.html">$_</a></li>
