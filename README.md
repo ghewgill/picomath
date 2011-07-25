@@ -38,8 +38,8 @@ The functions are implemented in the following languages:
 - Java
 - Javascript
 - Lua
-- PHP
 - Perl
+- PHP
 - Python (2.x and 3.x)
 - Ruby
 - Scheme
