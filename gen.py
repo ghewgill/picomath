@@ -15,6 +15,7 @@ Languages = {
     "java":         {"name": "Java",                    "suffix": ".java"},
     "javascript":   {"name": "Javascript",              "suffix": ".js"},
     "lua":          {"name": "Lua",                     "suffix": ".lua"},
+    "pascal":       {"name": "Pascal",                  "suffix": ".pas"},
     "perl":         {"name": "Perl",                    "suffix": ".pl"},
     "php":          {"name": "PHP",                     "suffix": ".php"},
     "python":       {"name": "Python (2.x and 3.x)",    "suffix": ".py"},

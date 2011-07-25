@@ -38,6 +38,7 @@ The functions are implemented in the following languages:
 - Java
 - Javascript
 - Lua
+- Pascal
 - Perl
 - PHP
 - Python (2.x and 3.x)
@@ -78,6 +79,7 @@ The expected output is:
     Checking java... ok
     Checking javascript... ok
     Checking lua... ok
+    Checking pascal... ok
     Checking perl... ok
     Checking php... ok
     Checking python... ok

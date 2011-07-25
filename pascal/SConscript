@@ -1,0 +1,12 @@
+# This SConscript file is the basic minimum needed to compile
+# FreePascal programs with SCons.
+
+Command("test", [
+    "test.pas",
+    Command("erf.o", "erf.pas", "fpc $SOURCE"),
+    Command("expm1.o", "expm1.pas", "fpc $SOURCE"),
+    Command("phi.o", "phi.pas", "fpc $SOURCE"),
+    Command("normal_cdf_inverse.o", "normal_cdf_inverse.pas", "fpc $SOURCE"),
+    Command("gamma.o", "gamma.pas", "fpc $SOURCE"),
+    Command("log_factorial.o", "log_factorial.pas", "fpc $SOURCE"),
+], "fpc $SOURCE")
