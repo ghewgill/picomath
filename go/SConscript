@@ -1,0 +1,15 @@
+# This SConscript file is the basic minimum needed to compile
+# Go programs with SCons. Change GOC and GOLINK as necessary
+# for your platform.
+
+env = Environment()
+
+env["GOC"] = "6g"
+env["GOLINK"] = "6l"
+
+env.Command("test", [
+    env.Command("test.6", "test.go", "$GOC -I go -o $TARGET $SOURCE"),
+    env.Command("phi.6", "phi.go", "$GOC -o $TARGET $SOURCE"),
+    env.Command("normal_cdf_inverse.6", "normal_cdf_inverse.go", "$GOC -o $TARGET $SOURCE"),
+    env.Command("log_factorial.6", "log_factorial.go", "$GOC -o $TARGET $SOURCE"),
+], "$GOLINK -L go -o $TARGET $SOURCE")

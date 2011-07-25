@@ -33,6 +33,7 @@ The functions are implemented in the following languages:
 - C++
 - C#
 - Erlang
+- Go
 - Haskell
 - Java
 - Javascript
@@ -72,6 +73,7 @@ The expected output is:
     Checking cpp... ok
     Checking csharp... ok
     Checking erlang... ok
+    Checking go... ok
     Checking haskell... ok
     Checking java... ok
     Checking javascript... ok

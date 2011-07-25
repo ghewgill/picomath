@@ -9,6 +9,7 @@ Languages = {
     "cpp":          {"name": "C++",                     "suffix": ".cpp"},
     "csharp":       {"name": "C#",                      "suffix": ".cs"},
     "erlang":       {"name": "Erlang",                  "suffix": ".erl"},
+    "go":           {"name": "Go",                      "suffix": ".go"},
     "haskell":      {"name": "Haskell",                 "suffix": ".hs"},
     "java":         {"name": "Java",                    "suffix": ".java"},
     "javascript":   {"name": "Javascript",              "suffix": ".js"},

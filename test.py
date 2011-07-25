@@ -7,6 +7,7 @@ Languages = {
     "cpp":          "./test",
     "csharp":       ["mono", "test.exe"],
     "erlang":       ["escript", "test.erl"],
+    "go":           "./test",
     "haskell":      ["runhaskell", "test.hs"],
     "java":         ["java", "Test"],
     "javascript":   ["java", "-cp", "js.jar", "org.mozilla.javascript.tools.shell.Main", "test.js"],
