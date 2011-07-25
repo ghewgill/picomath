@@ -2,6 +2,7 @@ import cgi
 import os
 import re
 import string
+import sys
 
 import test
 
@@ -33,20 +34,33 @@ def template(file=None, text=None, vars=None):
     i = 0
     while i < len(a):
         s = a[i]
-        m = re.match(r"\s*@iter\s+(\w+)@$", s)
+        m = re.match(r"\s*@(\w+)\s+(.+?)@$", s)
         if m is not None:
-            it = m.group(1)
-            j = i + 1
-            while j < len(a) and not re.match(r"\w*@end@$", a[j]):
-                j += 1
-            for x in vars[it]:
-                if isinstance(x, dict):
-                    d = {"_": x}
-                    d.update(x)
-                    r += template(text="\n".join(a[i+1:j]), vars=d)
-                else:
-                    r += template(text="\n".join(a[i+1:j]), vars={"_": x})
-            i = j + 1
+            cmd = m.group(1)
+            args = m.group(2)
+            if cmd == "iter":
+                it = args
+                j = i + 1
+                while j < len(a) and not re.match(r"\w*@end@$", a[j]):
+                    j += 1
+                for x in vars[it]:
+                    if isinstance(x, dict):
+                        d = {"_": x}
+                        d.update(x)
+                        r += template(text="\n".join(a[i+1:j]), vars=d)
+                    else:
+                        r += template(text="\n".join(a[i+1:j]), vars={"_": x})
+                i = j + 1
+            elif cmd == "include":
+                i += 1
+                try:
+                    r += open(string.Template(args).substitute(escapedvars)).read()
+                except Exception as e:
+                    if not isinstance(e, IOError) or e.errno != 2:
+                        print(e)
+            else:
+                print("Unknown directive: {0}".format(cmd), file=sys.stderr)
+                sys.exit(1)
         else:
             t = string.Template(s)
             r += t.substitute(escapedvars) + "\n"
@@ -61,6 +75,7 @@ def main():
         files = [x for x in os.listdir(language) if x.endswith(Languages[language]["suffix"]) and not x.startswith("test")]
         with open(os.path.join(language, "index.html"), "w") as f:
             f.write(template(file="language.template", vars={
+                "lang": language,
                 "name": Languages[language]["name"],
                 "functions": files,
             }))
