@@ -4,6 +4,10 @@ import re
 import string
 import sys
 
+import pygments
+import pygments.lexers
+import pygments.formatters
+
 import test
 
 Languages = {
@@ -23,6 +27,12 @@ Languages = {
     "scheme":       {"name": "Scheme",                  "suffix": ".scm"},
     "tcl":          {"name": "Tcl",                     "suffix": ".tcl"},
 }
+
+class UnescapedString:
+    def __init__(self, s):
+        self.s = s
+    def __str__(self):
+        return self.s
 
 def template(file=None, text=None, vars=None):
     """Super quick and dirty template function"""
@@ -82,11 +92,18 @@ def main():
             }))
         for fn in files:
             with open(os.path.join(language, fn + ".html"), "w") as f:
+                code = open(os.path.join(language, fn)).read()
+                highlighted = pygments.highlight(
+                    code,
+                    pygments.lexers.get_lexer_by_name(language),
+                    pygments.formatters.HtmlFormatter()
+                )
                 f.write(template(file="function.template", vars={
                     "name": Languages[language]["name"],
                     "file": fn,
                     "extension": Languages[language]["suffix"][1:],
-                    "code": open(os.path.join(language, fn)).read(),
+                    "code": UnescapedString(highlighted),
+                    "style": pygments.formatters.HtmlFormatter().get_style_defs(".highlight"),
                 }))
 
 if __name__ == "__main__":

@@ -1,13 +1,13 @@
 <html>
 <head>
 <title>$file - picomath</title>
-<link href="../prettify.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="../prettify.js"></script>
+<style type="text/css">
+$style
+</style>
 </head>
-<body onload="prettyPrint()">
 <h1><a href="../index.html">picomath</a></h1>
 <h2><a href="index.html">$name</a></h2>
 <h3>$file</h3>
-<pre class="prettyprint lang-$extension">$code</pre>
+$code
 </body>
 </html>
