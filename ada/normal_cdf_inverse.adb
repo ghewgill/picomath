@@ -1,0 +1,40 @@
+with Ada.Numerics.Generic_Elementary_Functions;
+
+package body Normal_CDF_Inverse is
+
+    package Elementary_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float_Type'Base);
+    use Elementary_Functions;
+
+    function Rational_Approximation(t: Float_Type'Base) return Float_Type'Base is
+
+        c: constant array(0..2) of Float_Type'Base := (2.515517, 0.802853, 0.010328);
+        d: constant array(0..2) of Float_Type'Base := (1.432788, 0.189269, 0.001308);
+
+        numerator, denominator: Float_Type'Base;
+
+    begin
+        -- Abramowitz and Stegun formula 26.2.23.
+        -- The absolute value of the error should be less than 4.5 e-4.
+        numerator := (c(2)*t + c(1))*t + c(0);
+        denominator := ((d(2)*t + d(1))*t + d(0))*t + 1.0;
+        return t - numerator / denominator;
+    end Rational_Approximation;
+
+    function Normal_CDF_Inverse(p: Float_Type'Base) return Float_Type'Base is
+
+    begin
+        if p <= 0.0 or else p >= 1.0 then
+            raise Ada.Numerics.Argument_Error;
+        end if;
+
+        -- See article above for explanation of this section.
+        if p < 0.5 then
+            -- F^-1(p) = - G^-1(p)
+            return -Rational_Approximation( Sqrt(-2.0*Log(p)) );
+        else
+            -- F^-1(p) = G^-1(1-p)
+            return Rational_Approximation( Sqrt(-2.0*Log(1.0-p)) );
+        end if;
+    end Normal_CDF_Inverse;
+
+end Normal_CDF_Inverse;

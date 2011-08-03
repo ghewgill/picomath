@@ -1,0 +1,18 @@
+with Ada.Numerics.Generic_Elementary_Functions;
+
+package body Expm1 is
+
+    package Elementary_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float_Type'Base);
+    use Elementary_Functions;
+
+    function Expm1(x: Float_Type'Base) return Float_Type'Base is
+
+    begin
+        if Abs(x) < 1.0e-5 then
+            return x + 0.5 * x * x;
+        else
+            return Exp(x) - 1.0;
+        end if;
+    end Expm1;
+
+end Expm1;

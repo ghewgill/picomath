@@ -30,6 +30,7 @@ Languages
 
 The functions are implemented in the following languages:
 
+- Ada
 - C++
 - C#
 - Erlang
@@ -71,6 +72,7 @@ To run the tests:
 
 The expected output is:
 
+    Checking ada... ok
     Checking cpp... ok
     Checking csharp... ok
     Checking erlang... ok

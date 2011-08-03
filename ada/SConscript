@@ -1,0 +1,9 @@
+Command("test", Split("""
+    test.adb
+    erf.adb
+    expm1.adb
+    phi.adb
+    normal_cdf_inverse.adb
+    gamma.adb
+    log_factorial.adb
+"""), "cd ada && gnatmake test.adb")

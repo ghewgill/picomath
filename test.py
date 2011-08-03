@@ -4,6 +4,7 @@ import os
 import sys
 
 Languages = {
+    "ada":          "./test",
     "cpp":          "./test",
     "csharp":       ["mono", "test.exe"],
     "erlang":       ["escript", "test.erl"],
