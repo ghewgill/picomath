@@ -230,7 +230,7 @@ def test_LogFactorial(driver, log):
         error = abs(math.log(factorial(x)) - driver.call("LogFactorial", x))
         if error > maxError:
             maxError = error
-    log.append("LogFactorial: Worst relative error: " + str(maxError))
+    log.append("LogFactorial: Worst absolute error: " + str(maxError))
     return maxError < 1e-6
 
 TestFunctions = (
