@@ -1,0 +1,13 @@
+<p>
+The following source files contain both the Ada specification part and body part.
+These can either be separated manually, or automatically using a tool such as <tt>gnatchop</tt>.
+</p>
+
+<p>
+Each function implementation is a generic package so the programmer can choose which floating point type to use. For example, to instantiate the <code>Gamma</code> package using <code>Long_Float</code>:
+
+<div style="margin-left: 2em">
+<pre>
+package My_Gamma is new Gamma(Long_Float);
+</pre>
+</div>
