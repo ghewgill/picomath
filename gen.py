@@ -11,7 +11,7 @@ import pygments.formatters
 import test
 
 Languages = {
-    "ada":          {"name": "Ada",                     "suffix": ".adb"},
+    "ada":          {"name": "Ada",                     "suffix": ".a"},
     "cpp":          {"name": "C++",                     "suffix": ".cpp"},
     "csharp":       {"name": "C#",                      "suffix": ".cs"},
     "erlang":       {"name": "Erlang",                  "suffix": ".erl"},

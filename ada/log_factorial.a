@@ -1,3 +1,11 @@
+generic
+    type Float_Type is digits <>;
+package Log_Factorial is
+
+    function Log_Factorial(n: Natural) return Float_Type'Base;
+
+end Log_Factorial;
+
 with Ada.Numerics.Generic_Elementary_Functions;
 
 package body Log_Factorial is

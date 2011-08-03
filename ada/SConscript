@@ -1,9 +1,17 @@
-Command("test", Split("""
-    test.adb
-    erf.adb
-    expm1.adb
-    phi.adb
-    normal_cdf_inverse.adb
-    gamma.adb
-    log_factorial.adb
-"""), "cd ada && gnatmake test.adb")
+env = Environment()
+
+env["BUILDERS"]["Chop"] = Builder(
+    action="gnatchop -w $SOURCE ada",
+    suffix=".adb",
+    src_suffix=".a"
+)
+
+env.Command("test", [
+    env.Chop("test.a"),
+    env.Chop("erf.a"),
+    env.Chop("expm1.a"),
+    env.Chop("phi.a"),
+    env.Chop("normal_cdf_inverse.a"),
+    env.Chop("gamma.a"),
+    env.Chop("log_factorial.a"),
+], "cd ada && gnatmake test.adb")
