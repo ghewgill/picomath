@@ -14,6 +14,17 @@ package body Gamma is
     package Elementary_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float_Type'Base);
     use Elementary_Functions;
 
+    function Positive_Infinity return Float_Type'Base is
+
+        result: Float_Type'Base := Float_Type'Base'Last;
+
+    begin
+        return Float_Type'Base'Succ(result);
+    exception
+        when Constraint_Error =>
+            return result;
+    end Positive_Infinity;
+
     function Gamma(x: Float_Type'Base) return Float_Type'Base is
 
         gamma: constant := 0.577215664901532860606512090; -- Euler's gamma constant
@@ -118,7 +129,7 @@ package body Gamma is
 
         else
             -- Correct answer too large to display. 
-            return 0.0; -- TODO: float infinity
+            return Positive_Infinity; -- float infinity
 
         end if;
     end Gamma;
