@@ -63,8 +63,8 @@ The test suite consists of two parts:
 </p>
 
 <ul>
-    <li>an `SConstruct` file (for <a href="http://scons.org">SCons</a>, a command line build system) to build the test code as needed</li>
-    <li>a Python `test.py` driver at the top level, and a corresponding `test.*` for each language</li>
+    <li>an <tt>SConstruct</tt> file (for <a href="http://scons.org">SCons</a>, a command line build system) to build the test code as needed</li>
+    <li>a Python <tt>test.py</tt> driver at the top level, and a corresponding <tt>test.*</tt> for each language</li>
 </ul>
 
 <p>
@@ -108,14 +108,14 @@ The expected output is:
 </pre>
 
 <p>
-The top level `test.py` runs each language-specific `test.*` in turn, communicating with the implementation using standard input and output.
+The top level <tt>test.py</tt> runs each language-specific <tt>test.*</tt> in turn, communicating with the implementation using standard input and output.
 A simple text-based protocol is used to execute functions and return results.
 </p>
 
 <h2>Source Download</h2>
 
 <p>
-The source code is on <a href="https://github.com/ghewgill/picomath">github</a>, and can be cloned, forked, or downloaded from there.
+The source code is on <a href="https://github.com/ghewgill/picomath">GitHub</a>, and can be cloned, forked, or downloaded from there.
 </p>
 
 <h2>About</h2>
