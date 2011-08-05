@@ -1,6 +1,7 @@
 SConscript("ada/SConscript")
 SConscript("cpp/SConscript")
 SConscript("csharp/SConscript")
+SConscript("d/SConscript")
 SConscript("erlang/SConscript")
 SConscript("go/SConscript")
 SConscript("java/SConscript")

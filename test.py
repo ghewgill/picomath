@@ -7,6 +7,7 @@ Languages = {
     "ada":          "./test",
     "cpp":          "./test",
     "csharp":       ["mono", "test.exe"],
+    "d":            "./test",
     "erlang":       ["escript", "test.erl"],
     "go":           "./test",
     "haskell":      ["runhaskell", "test.hs"],

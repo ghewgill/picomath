@@ -91,6 +91,7 @@ The expected output is:
     Checking ada... ok
     Checking cpp... ok
     Checking csharp... ok
+    Checking d... ok
     Checking erlang... ok
     Checking go... ok
     Checking haskell... ok

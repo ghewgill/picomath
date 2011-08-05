@@ -14,6 +14,7 @@ Languages = {
     "ada":          {"name": "Ada",                     "suffix": ".a"},
     "cpp":          {"name": "C++",                     "suffix": ".cpp"},
     "csharp":       {"name": "C#",                      "suffix": ".cs"},
+    "d":            {"name": "D",                       "suffix": ".d"},
     "erlang":       {"name": "Erlang",                  "suffix": ".erl"},
     "go":           {"name": "Go",                      "suffix": ".go"},
     "haskell":      {"name": "Haskell",                 "suffix": ".hs"},

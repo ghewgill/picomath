@@ -1,0 +1,8 @@
+# This SConscript file is the basic minimum needed to compile
+# the D 2.0 test program with SCons on Linux.
+
+env = Environment(DFLAGS="-Id")
+env.Program("test", Split("""
+    test.d
+    log_factorial.d
+"""), LIBS=["phobos2", "pthread", "rt", "m"])
