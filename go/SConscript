@@ -2,14 +2,16 @@
 # Go programs with SCons. Change GOC and GOLINK as necessary
 # for your platform.
 
-env = Environment()
+import os
 
-env["GOC"] = "6g"
-env["GOLINK"] = "6l"
+env = Environment(ENV={"PATH": os.getenv("PATH")})
+
+env["GOC"] = "8g"
+env["GOLINK"] = "8l"
 
 env.Command("test", [
-    env.Command("test.6", "test.go", "$GOC -I go -o $TARGET $SOURCE"),
-    env.Command("phi.6", "phi.go", "$GOC -o $TARGET $SOURCE"),
-    env.Command("normal_cdf_inverse.6", "normal_cdf_inverse.go", "$GOC -o $TARGET $SOURCE"),
-    env.Command("log_factorial.6", "log_factorial.go", "$GOC -o $TARGET $SOURCE"),
+    env.Command("test.8", "test.go", "$GOC -I go -o $TARGET $SOURCE"),
+    env.Command("phi.8", "phi.go", "$GOC -o $TARGET $SOURCE"),
+    env.Command("normal_cdf_inverse.8", "normal_cdf_inverse.go", "$GOC -o $TARGET $SOURCE"),
+    env.Command("log_factorial.8", "log_factorial.go", "$GOC -o $TARGET $SOURCE"),
 ], "$GOLINK -L go -o $TARGET $SOURCE")
