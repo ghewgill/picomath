@@ -23,7 +23,7 @@ func main() {
             break
         }
         s = strings.TrimRight(s, "\n")
-        a := strings.Split(s, " ", 2)
+        a := strings.Split(s, " ")
         f := a[0]
         x, err := strconv.Atof64(a[1])
         switch f {
