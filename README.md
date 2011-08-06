@@ -33,6 +33,7 @@ The functions are implemented in the following languages:
 - Ada
 - C++
 - C#
+- D
 - Erlang
 - Go
 - Haskell
