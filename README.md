@@ -30,23 +30,23 @@ Languages
 
 The functions are implemented in the following languages:
 
-- Ada
-- C++
-- C#
-- D
-- Erlang
-- Go
-- Haskell
-- Java
-- Javascript
-- Lua
-- Pascal
-- Perl
-- PHP
-- Python (2.x and 3.x)
-- Ruby
-- Scheme
-- Tcl
+- [Ada](http://adahome.com/)
+- [C++](http://en.wikipedia.org/wiki/C%2B%2B)
+- [C#](http://en.wikipedia.org/wiki/C_Sharp_%28programming_language%29)
+- [D](http://www.digitalmars.com/d/2.0/index.html)
+- [Erlang](http://www.erlang.org/)
+- [Go](http://golang.org/)
+- [Haskell](http://www.haskell.org/)
+- [Java](http://www.java.com/)
+- [Javascript](http://en.wikipedia.org/wiki/JavaScript)
+- [Lua](http://www.lua.org/)
+- [Pascal](http://en.wikipedia.org/wiki/Pascal_%28programming_language%29)
+- [Perl](http://www.perl.org/)
+- [PHP](http://www.php.net/)
+- [Python](http://www.python.org/) (2.x and 3.x)
+- [Ruby](http://www.ruby-lang.org/)
+- [Scheme](http://schemers.org/)
+- [Tcl](http://www.tcl.tk/)
 
 Usage
 -----
