@@ -9,7 +9,10 @@ object Main extends App {
       }
       val a: Array[String] = s.split(" ");
       val x: Double = a.apply(1).toDouble;
-      println("Unknown function: " + a.apply(0));
+      a.apply(0) match {
+        case "erf" =>  println(Erf.erf(x));
+        case _ => println("Unknown function: " + a.apply(0));
+      }
       return;
     }
   }
