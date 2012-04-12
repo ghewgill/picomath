@@ -15,7 +15,7 @@ class Erf {
         val sign = if (x < 0) -1 else 1
         val absx =  math.abs(x)
 
-        // A&S formula 7.1.26
+        // A&S formula 7.1.26, rational approximation of error function
         val t = 1.0/(1.0 + p*absx);
         val y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*math.exp(-x*x);
         sign*y
