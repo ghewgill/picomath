@@ -13,6 +13,7 @@ object Main extends App {
         case "erf" =>  println(Erf.erf(x));
         case "expm1" => println(Expm1.expm1(x));
         case "phi" => println(Phi.phi(x));
+        case "NormalCDFInverse" => println(NormalCDFInverse.normalCDFInverse(x));
         case _ => { println("Unknown function: " + a.apply(0)); return;}
       }
     }
