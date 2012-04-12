@@ -1,5 +1,6 @@
 import scala.math
 
+//Calculates the error function using Horner’s method.
 class Erf {
   // constants
   val a1: Double =  0.254829592;
@@ -11,7 +12,7 @@ class Erf {
 
   def erf(x: Double): Double =  {
         // Save the sign of x
-        val sign = if (x < 0) 1 else 0
+        val sign = if (x < 0) -1 else 1
         val absx =  math.abs(x)
 
         // A&S formula 7.1.26

@@ -11,9 +11,9 @@ object Main extends App {
       val x: Double = a.apply(1).toDouble;
       a.apply(0) match {
         case "erf" =>  println(Erf.erf(x));
-        case _ => println("Unknown function: " + a.apply(0));
+        case "expm1" => println(Expm1.expm1(x));
+        case _ => { println("Unknown function: " + a.apply(0)); return;}
       }
-      return;
     }
   }
 }
