@@ -14,6 +14,8 @@ object Main extends App {
         case "expm1" => println(Expm1.expm1(x));
         case "phi" => println(Phi.phi(x));
         case "NormalCDFInverse" => println(NormalCDFInverse.normalCDFInverse(x));
+        case "Gamma" => println(Gamma.gamma(x));
+        case "LogGamma" => println(Gamma.logGamma(x));
         case _ => { println("Unknown function: " + a.apply(0)); return;}
       }
     }
