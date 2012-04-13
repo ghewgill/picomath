@@ -98,14 +98,7 @@ class Gamma {
           else
             {
               // Use the identity gamma(z+n) = z*(z+1)* ... *(z+n-1)*gamma(z)
-//              List.range(0,n.toInt).map(_.toDouble).foldLeft(result)((a,b) => a*(y+b))
-              var hobores = result
-              var hoboy = y
-              for (i <- 0 to n-1) {
-                hobores *= hoboy;
-                hoboy = hoboy+1
-              }
-              todo(hobores)
+              todo(List.range(0,n.toInt).map(_.toDouble).foldLeft(result)((a,b) => a*(y+b)))
             }
         } else if (x <= 171.624) {
           ///////////////////////////////////////////////////////////////////////////
