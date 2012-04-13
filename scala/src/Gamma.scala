@@ -18,11 +18,6 @@ class Gamma {
   //we manually make a trampoline and make it tail recursive
   @tailrec
   private def hoboTrampoline(x: Double, log: Boolean,todo: Double => Double): Double = {
-//    if (log) {
-//      println("hobo trampoline with "+x+"and log");
-//    } else {
-//      println("hobo trampoline with "+x+"and no log");
-//    }
     if (!log) {
         if (x <= 0.0)
         {
@@ -87,16 +82,8 @@ class Gamma {
             );
 
           val z: Double = y - 1;
-//          val num = p.foldLeft(1: Double)({(a,b) => (b+a)*z})
-//          val den = q.foldLeft(0: Double)({(a,b) => b*z+a})
-            var num: Double = 0.0;
-            var den: Double = 1.0;
-
-            for (i <- 0 to 7)
-            {
-                num = (num + p(i))*z;
-                den = den*z + q(i);
-            }
+          val num = p.foldLeft(0: Double)({(a,b) => (b+a)*z})
+          val den = q.foldLeft(1: Double)({(a,b) => a*z+b})
 
           val result = num/den + 1.0;
 
