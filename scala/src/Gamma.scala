@@ -6,16 +6,23 @@ import scala.annotation.tailrec
 class Gamma {
   //Entry points
   def gamma(x:Double): Double = {
-    hoboTrampoline(x,false,((y: Double) => y))
+    val v = hoboTrampoline(x,false,((y: Double) => y))
+    v
   }
   def logGamma(x:Double): Double = {
-    hoboTrampoline(x,true,((y: Double) => y))
+    val v = hoboTrampoline(x,true,((y: Double) => y))
+    v
   }
 
   //Since scala doesn't support optimizing co-recursive tail-calls
   //we manually make a trampoline and make it tail recursive
   @tailrec
   private def hoboTrampoline(x: Double, log: Boolean,todo: Double => Double): Double = {
+//    if (log) {
+//      println("hobo trampoline with "+x+"and log");
+//    } else {
+//      println("hobo trampoline with "+x+"and no log");
+//    }
     if (!log) {
         if (x <= 0.0)
         {
@@ -35,7 +42,7 @@ class Gamma {
 
         val gamma: Double = 0.577215664901532860606512090; // Euler's gamma constant
         if (x < 0.001) {
-            1.0/(x*(1.0 + gamma*x));
+            todo(1.0/(x*(1.0 + gamma*x)));
         } else if (x < 12.0) {
           ///////////////////////////////////////////////////////////////////////////
           // Second interval: [0.001, 12)
@@ -99,7 +106,7 @@ class Gamma {
               // Use identity gamma(z) = gamma(z+1)/z
               // The variable "result" now holds gamma of the original y + 1
               // Thus we use y-1 to get back the orginal y.
-              result / (y-1.0);
+              todo(result / (y-1.0));
             }
           else
             {
@@ -108,10 +115,10 @@ class Gamma {
               var hobores = result
               var hoboy = y
               for (i <- 0 to n-1) {
-                hobores *= hoboy+1;
+                hobores *= hoboy;
                 hoboy = hoboy+1
               }
-              hobores
+              todo(hobores)
             }
         } else if (x <= 171.624) {
           ///////////////////////////////////////////////////////////////////////////
@@ -121,7 +128,7 @@ class Gamma {
           ///////////////////////////////////////////////////////////////////////////
           // Fourth interval: [171.624, INFINITY)
           // Correct answer too large to display.
-          scala.Double.PositiveInfinity
+          todo(scala.Double.PositiveInfinity)
         }
     } else {
       //log implementation
@@ -156,7 +163,7 @@ class Gamma {
 
         val halfLogTwoPi: Double = 0.91893853320467274178032973640562;
         val logGamma: Double = (x - 0.5)*Math.log(x) - x + halfLogTwoPi + series;
-        logGamma;
+        todo(logGamma);
       }
     }
   }
