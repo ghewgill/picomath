@@ -88,23 +88,9 @@ The expected output is:
 </p>
 
 <pre>
-    Checking ada... ok
-    Checking cpp... ok
-    Checking csharp... ok
-    Checking d... ok
-    Checking erlang... ok
-    Checking go... ok
-    Checking haskell... ok
-    Checking java... ok
-    Checking javascript... ok
-    Checking lua... ok
-    Checking pascal... ok
-    Checking perl... ok
-    Checking php... ok
-    Checking python... ok
-    Checking ruby... ok
-    Checking scheme... ok
-    Checking tcl... ok
+@iter languages@
+    Checking $dir... ok
+@end@
 </pre>
 
 <p>
