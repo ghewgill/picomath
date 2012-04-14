@@ -80,21 +80,26 @@ def template(file=None, text=None, vars=None):
             i += 1
     return r
 
+def listrecdir(path):
+    for dirpath, dirnames, filenames in os.walk(path):
+        for filename in filenames:
+            yield os.path.join(dirpath, filename)
+
 def main():
     languages = sorted(test.Languages.keys())
     with open("index.html", "w") as f:
         f.write(template(file="index.template", vars={"languages": [dict(Languages[x].items() | {"dir": x}.items()) for x in languages]}))
     for language in languages:
-        files = [x for x in os.listdir(language) if x.endswith(Languages[language]["suffix"]) and not x.startswith("test")]
+        files = [x for x in listrecdir(language) if x.endswith(Languages[language]["suffix"]) and not os.path.basename(x).startswith("test")]
         with open(os.path.join(language, "index.html"), "w") as f:
             f.write(template(file="language.template", vars={
                 "lang": language,
                 "name": Languages[language]["name"],
-                "functions": files,
+                "functions": [os.path.basename(x) for x in files],
             }))
         for fn in files:
-            with open(os.path.join(language, fn + ".html"), "w") as f:
-                code = open(os.path.join(language, fn)).read()
+            with open(os.path.join(language, os.path.basename(fn) + ".html"), "w", encoding="utf-8") as f:
+                code = open(fn, encoding="utf-8").read()
                 highlighted = pygments.highlight(
                     code,
                     pygments.lexers.get_lexer_by_name(language),
@@ -102,7 +107,7 @@ def main():
                 )
                 f.write(template(file="function.template", vars={
                     "name": Languages[language]["name"],
-                    "file": fn,
+                    "file": os.path.basename(fn),
                     "extension": Languages[language]["suffix"][1:],
                     "code": UnescapedString(highlighted),
                     "style": pygments.formatters.HtmlFormatter().get_style_defs(".highlight"),
