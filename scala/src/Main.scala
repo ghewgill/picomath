@@ -16,6 +16,7 @@ object Main extends App {
         case "NormalCDFInverse" => println(NormalCDFInverse.normalCDFInverse(x));
         case "Gamma" => println(Gamma.gamma(x));
         case "LogGamma" => println(Gamma.logGamma(x));
+        case "LogFactorial" => println(LogFactorial.logFactorial(x.toInt));
         case _ => { println("Unknown function: " + a.apply(0)); return;}
       }
     }
