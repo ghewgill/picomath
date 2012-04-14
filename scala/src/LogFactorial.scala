@@ -1,4 +1,5 @@
 import scala.math
+import java.lang.Integer
 
 class LogFactorial {
 
@@ -271,7 +272,7 @@ class LogFactorial {
     else if (n > 254)
       {
         val x: Double = n.toDouble + 1;
-        return (x - 0.5)*Math.log(x) - x + 0.5*Math.log(2*math.Pi) + 1.0/(12.0*x);
+        return (x - 0.5)*math.log(x) - x + 0.5*math.log(2*math.Pi) + 1.0/(12.0*x);
       }
     else
       {

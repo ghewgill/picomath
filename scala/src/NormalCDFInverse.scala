@@ -22,10 +22,10 @@ class NormalCDFInverse {
     // See article above for explanation of this section.
     if (p < 0.5) {
       // F^-1(p) = - G^-1(p)
-      return -rationalApproximation( Math.sqrt(-2.0*Math.log(p)) );
+      return -rationalApproximation( math.sqrt(-2.0*math.log(p)) );
     } else {
       // F^-1(p) = G^-1(1-p)
-      return rationalApproximation( Math.sqrt(-2.0*Math.log(1.0-p)) );
+      return rationalApproximation( math.sqrt(-2.0*math.log(1.0-p)) );
     }
   }
 }

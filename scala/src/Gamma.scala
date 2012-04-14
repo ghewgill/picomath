@@ -1,5 +1,6 @@
 import scala.math
 import scala.annotation.tailrec
+import java.lang.Integer
 
 // Adapted from http://www.johndcook.com/stand_alone_code.html
 // All bugs are however likely my fault
@@ -119,7 +120,7 @@ class Gamma {
         }
 
       if (x < 12.0) {
-        hoboTrampoline(x,false,((a: Double) => todo(Math.log(Math.abs(a)))));
+        hoboTrampoline(x,false,((a: Double) => todo(math.log(math.abs(a)))));
       } else {
 
         // Abramowitz and Stegun 6.1.41
@@ -142,7 +143,7 @@ class Gamma {
         val series: Double = sum/x;
 
         val halfLogTwoPi: Double = 0.91893853320467274178032973640562;
-        val logGamma: Double = (x - 0.5)*Math.log(x) - x + halfLogTwoPi + series;
+        val logGamma: Double = (x - 0.5)*math.log(x) - x + halfLogTwoPi + series;
         todo(logGamma);
       }
     }

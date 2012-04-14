@@ -12,11 +12,11 @@ class Phi {
     def phi(x: Double): Double = {
       // Save the sign of x
       val sign = if (x < 0) -1 else 1
-      val absqx = Math.abs(x)/Math.sqrt(2.0);
+      val absqx = math.abs(x)/math.sqrt(2.0);
 
       // A&S formula 7.1.26, rational approximation of error function
       val t: Double = 1.0/(1.0 + p*absqx);
-      val y: Double = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*Math.exp(-absqx*absqx);
+      val y: Double = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*math.exp(-absqx*absqx);
 
       0.5*(1.0 + sign*y)
     }
