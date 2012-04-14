@@ -1,6 +1,6 @@
 import java.io.DataInputStream;
 
-object Main extends App {
+object test extends App {
   override def main(args: Array[String]) {
     while (true) {
       val s = readLine()
