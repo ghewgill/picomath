@@ -19,6 +19,7 @@ Languages = {
     "perl":         ["perl", "test.pl"],
     "python":       [sys.executable, "test.py"],
     "ruby":         ["ruby", "test.rb"],
+    "scala":        ["scala", "picomath.jar"],
     "scheme":       ["guile", "test.scm"],
     "tcl":          ["tclsh", "test.tcl"],
 }
