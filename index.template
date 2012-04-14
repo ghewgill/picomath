@@ -109,6 +109,7 @@ The source code is on <a href="https://github.com/ghewgill/picomath">GitHub</a>,
 <ul>
     <li><a href="http://www.johndcook.com">John D. Cook</a> is the original author of most of the functions themselves.</li>
     <li><a href="http://hewgill.com">Greg Hewgill</a> implemented the test framework and translated the functions to many of the included languages.</li>
+    <li><a href="https://github.com/holdenk">Holden Karau</a> contributed the Scala implementation.</li>
 </ul>
 
 </body>
